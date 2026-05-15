@@ -138,6 +138,20 @@
     transform:translateY(2px);
     box-shadow:1px 1px 0 #800000;
   }
+  .btn-notion{
+    background:#fff;color:var(--navy);border:none;
+    box-shadow:3px 3px 0 var(--navy);
+    transition:transform .1s,box-shadow .1s;
+    display:inline-flex;align-items:center;
+  }
+  .btn-notion:hover{
+    transform:translateY(-2px);
+    box-shadow:3px 5px 0 var(--navy);
+  }
+  .btn-notion:active{
+    transform:translateY(2px);
+    box-shadow:1px 1px 0 var(--navy);
+  }
 
   /* 모달 삭제 버튼: 빨강 + 흰 글자 + 입체감 */
   .btn-delete{
@@ -586,6 +600,7 @@
       <!-- 태그 필터 (검색창 호버/포커스 시 드롭다운) -->
       <div class="filter-row tag-dropdown" id="tag-row"><span class="filter-label">태그</span></div>
     </div>
+    <a class="btn btn-sm btn-notion" href="https://www.notion.so/1c4210678991808a87dbc00e283132c1" target="_blank" rel="noopener noreferrer" style="flex-shrink:0;text-decoration:none;">노션</a>
     <button class="btn btn-sm btn-remind" onclick="showRemind()" style="flex-shrink:0">밈 리마인드</button>
   </div>
 </div>
