@@ -3,3 +3,7 @@ Thumbs.db
 .vscode/
 .idea/
 *.swp
+
+# 원본 이미지 (PNG 변환본만 commit)
+*.webp
+*.webp.webp

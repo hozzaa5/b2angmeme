@@ -1,0 +1,26 @@
+{
+  "name": "빵빵이 레퍼런스",
+  "short_name": "빵빵밈",
+  "description": "빵빵이 콘텐츠 레퍼런스 모음",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fff8e5",
+  "theme_color": "#41A2FF",
+  "lang": "ko",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
