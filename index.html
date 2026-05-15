@@ -1220,6 +1220,47 @@ function closeRemind() { document.getElementById('remind-toast').classList.remov
 
 loadItems();
 
+// 공유 타겟 수신 (안드로이드에서 다른 앱이 공유한 URL 받기)
+(function handleShareTarget() {
+  const p = new URLSearchParams(location.search);
+  const sharedUrl = p.get('shared_url') || '';
+  const sharedTitle = p.get('shared_title') || '';
+  const sharedText = p.get('shared_text') || '';
+  if (!sharedUrl && !sharedTitle && !sharedText) return;
+
+  // text 안에 URL이 들어있으면 추출
+  let url = sharedUrl;
+  let memo = sharedText;
+  if (!url && sharedText) {
+    const m = sharedText.match(/https?:\/\/[^\s]+/);
+    if (m) { url = m[0]; memo = sharedText.replace(url, '').trim(); }
+  }
+
+  // 폼에 채우기
+  if (url) {
+    const el = document.getElementById('inp-url');
+    if (el) { el.value = url; if (typeof onUrl === 'function') onUrl(url); }
+  }
+  if (sharedTitle) {
+    const el = document.getElementById('inp-title');
+    if (el) el.value = sharedTitle;
+  }
+  if (memo) {
+    const el = document.getElementById('inp-memo');
+    if (el) el.value = memo;
+  }
+
+  // 새로고침 시 중복 방지: URL에서 파라미터 제거
+  history.replaceState({}, '', location.pathname);
+
+  // 입력 영역으로 스크롤
+  const target = document.getElementById('inp-url');
+  if (target) {
+    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    setTimeout(() => target.focus(), 400);
+  }
+})();
+
 // PWA Service Worker 등록
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
